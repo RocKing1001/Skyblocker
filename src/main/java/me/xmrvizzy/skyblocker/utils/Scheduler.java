@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.PriorityQueue;
+import me.xmrvizzy.skyblocker.utils.Scheduler.ScheduledTask;
 
 public class Scheduler {
     private static final Logger LOGGER = LoggerFactory.getLogger(Scheduler.class);
@@ -54,7 +55,7 @@ public class Scheduler {
         }
     }
 
-    private record ScheduledTask(int schedule, Runnable inner) implements Comparable<ScheduledTask>, Runnable {
+    record ScheduledTask(int schedule, Runnable inner) implements Comparable<ScheduledTask>, Runnable {
         @Override
         public int compareTo(ScheduledTask o) {
             return schedule - o.schedule;
